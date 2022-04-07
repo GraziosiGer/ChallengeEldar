@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.Exceptions.FueraRangoTasaException;
 import com.company.tarjeta.Tarjeta;
+import com.company.tarjeta.TarjetaFactory;
 import com.company.tarjeta.Visa;
 
 import java.time.LocalDate;
@@ -10,7 +11,8 @@ public class Challenge {
 
     public static void main(String[] args) throws FueraRangoTasaException {
 
-        Tarjeta tarjeta = new Visa(123456,new Titular("German", "Graziosi"), LocalDate.of(2022,4,20));
+        TarjetaFactory factory = new TarjetaFactory();
+        Tarjeta tarjeta = factory.getTarjeta("Nara",123456,new Titular("German", "Graziosi"), LocalDate.of(2022,3,20));
         Operacion operacion = new Operacion(tarjeta,-500);
 
         System.out.println(tarjeta.getInformacionTarjeta());
